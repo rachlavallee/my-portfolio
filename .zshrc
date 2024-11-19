@@ -1,1 +1,2 @@
-export PATH=/usr/local/Cellar/maven/3.9.9/libexec:$PATH
+export JAVA_HOME=/path/to/your/jdk
+export PATH=$JAVA_HOME/bin:$PATH
