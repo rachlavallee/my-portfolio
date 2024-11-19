@@ -1,2 +1,2 @@
-export JAVA_HOME=/path/to/your/jdk
+export JAVA_HOME=/usr/bin/java
 export PATH=$JAVA_HOME/bin:$PATH
