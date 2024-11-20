@@ -15,7 +15,7 @@ document.getElementById("contactForm").addEventListener("submit", async(e)=>{
         });
 
         const result = await response.json();
-        document.getElementById("responseMessage").innerTest=result.message;
+        document.getElementById("responseMessage").innerText=result.message;
 
     }catch(error){
         document.getElementById("responseMessage").innerText="Error sending message. Please try again.";

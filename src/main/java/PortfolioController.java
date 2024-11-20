@@ -1,5 +1,7 @@
 package main.java;
 
+import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +23,12 @@ public class PortfolioController {
         return projects;
     }
 
-    public Response sendContact(@RequestBody ContactForm form){
+    @PostMapping("/contact")
+    public Response sendContact(@RequestBody ContactForm form) {
         System.out.println("Message from " + form.getName() + ": " + form.getMessage());
         return new Response("Thank you for your message, " + form.getName() + "!");
     }
+
 }
 
 class Project{
