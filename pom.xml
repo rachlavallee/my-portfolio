@@ -3,7 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version> <!-- Or your desired Spring Boot version -->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>java.main</groupId>
     <artifactId>portfolio</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,19 +19,17 @@
         <java.version>17</java.version>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.7.0</version>
         </dependency>
-        <!-- Removed spring-boot-starter-data-jpa -->
     </dependencies>
-
 
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

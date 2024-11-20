@@ -2,7 +2,7 @@ services:
   - type: web
     name: portfolio
     buildCommand: ./mvnw clean package
-    startCommand: java -jar target/portfolio-1.0-SNAPSHOT.jar
+    startCommand: java -jar target/*.jar
     envVars:
       - key: JAVA_HOME
         value: /usr/bin/java      # Change this if you are using a different version of Java
