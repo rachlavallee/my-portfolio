@@ -1,17 +1,27 @@
-# Use an official OpenJDK runtime as the base image
-FROM openjdk:17-jdk-slim
+# Use an official Maven image to build the app
+FROM maven:3.8.6-openjdk-17 AS build
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the local project to the container
-COPY . /app
+# Copy the pom.xml and the source code
+COPY pom.xml .
+COPY src ./src
 
-# Install Maven (if you need it)
-RUN apt-get update && apt-get install -y maven
+# Build the application (this will create the JAR file)
+RUN mvn clean package -DskipTests
 
-# Build your project (use your Maven wrapper or Maven command)
-RUN ./mvnw clean package
+# Use an official OpenJDK runtime as the base image to run the app
+FROM openjdk:17-jdk-slim
 
-# Command to run your application (adjust as needed)
-CMD ["java", "-jar", "target/your-application.jar"]
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file from the previous build stage
+COPY --from=build /app/target/portfolio-1.0-SNAPSHOT.jar ./portfolio-1.0-SNAPSHOT.jar
+
+# Expose the application port (adjust if needed)
+EXPOSE 8080
+
+# Command to run the JAR file
+CMD ["java", "-jar", "portfolio-1.0-SNAPSHOT.jar"]
